@@ -6,7 +6,7 @@ public class Bbs {
 	private String bbsTitle;
 	private String userID;
 	private String bbsDate;
-	private String bbsCOntent;
+	private String bbsContent;
 	private int bbsAvailable;
 	
 	public int getBbsID() {
@@ -33,11 +33,11 @@ public class Bbs {
 	public void setBbsDate(String bbsDate) {
 		this.bbsDate = bbsDate;
 	}
-	public String getBbsCOntent() {
-		return bbsCOntent;
+	public String getBbsContent() {
+		return bbsContent;
 	}
-	public void setBbsCOntent(String bbsCOntent) {
-		this.bbsCOntent = bbsCOntent;
+	public void setBbsContent(String bbsContent) {
+		this.bbsContent = bbsContent;
 	}
 	public int getBbsAvailable() {
 		return bbsAvailable;
