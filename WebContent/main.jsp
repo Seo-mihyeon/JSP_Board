@@ -3,12 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>게시판</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-	<script>
-		location.href="main.jsp";	//login.jsp로 강제 이동
-	</script>
+
 </body>
 </html>
