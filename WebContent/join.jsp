@@ -9,6 +9,13 @@
 <title>게시판</title>
 </head>
 <body>
+	<%
+		String userID = null;
+		if (session.getAttribute("userID") != null ) {
+			userID = (String)session.getAttribute("userID");
+		}
+	%>
+	
 	<nav class ="navbar navbar-default">
         <div class="navbar-header"> <!-- 홈페이지의 로고 -->
             <button type="button" class="navbar-toggle collapsed"
@@ -23,7 +30,13 @@
 		<div class="collpase navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
+				<%
+				if(userID != null){
+				%>
 				<li><a href="bbs.jsp">게시판</a></li>
+				<%
+				}
+				%>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
