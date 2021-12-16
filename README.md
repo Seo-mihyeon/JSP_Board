@@ -37,5 +37,5 @@ CREATE TABLE USER (
     bbsContent VARCHAR(2048),
     bbsAvailable INT,
     PRIMARY KEY (bbsID)
-    );
+    )DEFAULT CHARSET=utf8;
 ```
