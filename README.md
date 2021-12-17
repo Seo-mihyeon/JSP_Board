@@ -36,6 +36,7 @@ CREATE TABLE USER (
     bbsDate DATETIME,
     bbsContent VARCHAR(2048),
     bbsAvailable INT,
+    bbsReDate DATETIME,
     PRIMARY KEY (bbsID)
     )DEFAULT CHARSET=utf8;
 ```
