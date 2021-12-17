@@ -55,7 +55,7 @@ public class BbsDAO {
 	
 	// 글 작성
 	public int write(String bbsTitle, String userID, String bbsContent) {
-		String SQL = "INSERT INTO BBS VALUES (?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO BBS (bbsID, bbsTitle, userID, bbsDate, bbsContent, bbsAvailable) values (?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -87,6 +87,7 @@ public class BbsDAO {
 				bbs.setBbsDate(rs.getString(4));
 				bbs.setBbsContent(rs.getString(5));
 				bbs.setBbsAvailable(rs.getInt(6));
+				bbs.setBbsReDate(rs.getString(7));
 				list.add(bbs);
 			}
 		} catch (Exception e) {
@@ -109,7 +110,6 @@ public class BbsDAO {
 			e.printStackTrace();
 		}		
 		return false;
-
 	}
 	
 	// 상세 글 보기 - 데이터 값 가져오기
@@ -127,6 +127,7 @@ public class BbsDAO {
 				bbs.setBbsDate(rs.getString(4));
 				bbs.setBbsContent(rs.getString(5));
 				bbs.setBbsAvailable(rs.getInt(6));
+				bbs.setBbsReDate(rs.getString(7));
 				return bbs;
 			}
 		} catch (Exception e) {
@@ -136,13 +137,14 @@ public class BbsDAO {
 	}
 	
 	// 수정
-	public int update(int bbsID, String bbsTitle, String bbsContent) {
-		String SQL = "UPDATE BBS SET bbsTitle = ?, bbsContent = ? where bbsID = ?";
+	public int update(int bbsID, String bbsTitle, String bbsContent, String bbsReDate) {
+		String SQL = "UPDATE BBS SET bbsTitle = ?, bbsContent = ?, bbsReDate= ?  where bbsID = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, bbsTitle);
 			pstmt.setString(2, bbsContent);
-			pstmt.setInt(3, bbsID);
+			pstmt.setString(3, getDate());
+			pstmt.setInt(4, bbsID);
 			return pstmt.executeUpdate();
 			
 		} catch (Exception e) {

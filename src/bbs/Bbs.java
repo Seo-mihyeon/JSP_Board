@@ -8,6 +8,8 @@ public class Bbs {
 	private String bbsDate;
 	private String bbsContent;
 	private int bbsAvailable;
+	private String bbsReDate;
+	
 	
 	public int getBbsID() {
 		return bbsID;
@@ -45,6 +47,13 @@ public class Bbs {
 	public void setBbsAvailable(int bbsAvailable) {
 		this.bbsAvailable = bbsAvailable;
 	}
+	public String getBbsReDate() {
+		return bbsReDate;
+	}
+	public void setBbsReDate(String bbsReDate) {
+		this.bbsReDate = bbsReDate;
+	}
+	
 	
 	
 }

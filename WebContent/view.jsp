@@ -104,6 +104,17 @@
 							<td colspan="2"><%= bbs.getBbsDate().substring(0, 11) + bbs.getBbsDate().substring(11, 13) + "시" + bbs.getBbsDate().substring(14,16) + "분"%></td>
 						</tr>
 						<tr>
+							<td>수정일자</td>
+							
+							<td colspan="2">
+							<%if(bbs.getBbsReDate() != null) {%>
+								<%= bbs.getBbsReDate().substring(0, 11) + bbs.getBbsReDate().substring(11, 13) + "시" + bbs.getBbsReDate().substring(14,16) + "분"%>
+							<%} else { %>
+								-
+							<%} %>
+							</td>
+						</tr>
+						<tr>
 							<td style="width: 20%;">내용</td>
 							<td colspan="2" style="min-height: 200px; text-align: left;">
 							<%=
