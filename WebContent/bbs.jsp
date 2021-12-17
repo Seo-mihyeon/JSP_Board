@@ -18,6 +18,15 @@
 		text-decoration: none;
 	}
 </style>
+
+<script type="text/javascript">
+	function selectAll(selectAll)  {
+		  const checkboxes  = document.getElementsByName('all');
+		  checkboxes.forEach((checkbox) => {
+		    checkbox.checked = selectAll.checked;
+		  })
+		}
+</script>
 </head>
 <body>
 	<%
@@ -90,6 +99,7 @@
 			<table class="table table-striped" style="text-align : center; border : 1px solid #dddddd">
 				<thead>
 					<tr>
+						<th style="background-color: #eeeeee; text-align: center;"><input type="checkbox" name='all' value='selectall'onclick='selectAll(this)'></th>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
 						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
@@ -104,6 +114,7 @@
 						for(int i = 0; i < list.size(); i++){
 					%>
 						<tr>
+							<td><input type="checkbox" name='all' ></td>
 							<td><%= list.get(i).getBbsID() %></td>
 							<td><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>"><%= list.get(i).getBbsTitle()%></td>
 							<td><%= list.get(i).getUserID() %></td>
@@ -135,6 +146,8 @@
 			%>
 			
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<button class="btn btn-danger pull-right" style="margin-right: 10px;" >삭제</button>
+		
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

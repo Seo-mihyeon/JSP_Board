@@ -191,4 +191,7 @@ public class BbsDAO {
 		}
 		return list;
 	}
+	
+	// 체크박스삭제
+	
 }

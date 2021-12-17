@@ -47,7 +47,7 @@
 		<div class="collpase navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li class="active"><a href="bbs.jsp">게시판</a></li>
+				<li><a href="bbs.jsp">게시판</a></li>
 			</ul>
 			<%
 				if(userID == null) {
@@ -127,8 +127,8 @@
 				<%
 					if(userID != null && userID.equals(bbs.getUserID())){
 				%>
-					<a href="update.jsp?bbsID=<%=bbsID%>" class="btn btn-primary">수정</a>
-					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%=bbsID%>" class="btn btn-primary">삭제</a>
+					<a href="update.jsp?bbsID=<%=bbsID%>" class="btn btn-primary btn-info">수정</a>
+					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%=bbsID%>" class="btn btn-primary btn-danger">삭제</a>
 				<%
 					}				
 				%>
