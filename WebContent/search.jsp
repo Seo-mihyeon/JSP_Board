@@ -29,6 +29,13 @@
 		if(request.getParameter("pageNumber") != null){
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
+		
+		String searchWord = null;
+		if(request.getParameter("searchWord") != null){
+			searchWord = request.getParameter("searchWord");
+		}
+		
+		
 	%>
 	<nav class ="navbar navbar-default">
         <div class="navbar-header"> <!-- 홈페이지의 로고 -->
@@ -44,7 +51,7 @@
 		<div class="collpase navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="bbs.jsp">게시판</a></li>
+				<li class="active"><a href="bbs.jsp">게시판</a></li>
 			</ul>
 			<%
 				if(userID == null) {
@@ -100,17 +107,18 @@
 				<tbody>
 					<%
 						BbsDAO bbsDAO = new BbsDAO();
-						ArrayList<Bbs> list = bbsDAO.getList(pageNumber);
-						for(int i = 0; i < list.size(); i++){
+						ArrayList<Bbs> search = bbsDAO.search(pageNumber, searchWord);
+						for(int i = 0; i < search.size(); i++){
 					%>
 						<tr>
-							<td><%= list.get(i).getBbsID() %></td>
-							<td><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>"><%= list.get(i).getBbsTitle()%></td>
-							<td><%= list.get(i).getUserID() %></td>
-							<td><%= list.get(i).getBbsDate().substring(0, 11) + list.get(i).getBbsDate().substring(11, 13) + "시" + list.get(i).getBbsDate().substring(14,16) + "분"%></td>
+							<td><%= search.get(i).getBbsID() %></td>
 							<td>
-							<%if(list.get(i).getBbsReDate() != null) {%>
-								<%= list.get(i).getBbsReDate().substring(0, 11) + list.get(i).getBbsReDate().substring(11, 13) + "시" + list.get(i).getBbsReDate().substring(14,16) + "분"%>
+							<a href="view.jsp?bbsID=<%= search.get(i).getBbsID() %>"><%= search.get(i).getBbsTitle()%></td>
+							<td><%= search.get(i).getUserID() %></td>
+							<td><%= search.get(i).getBbsDate().substring(0, 11) + search.get(i).getBbsDate().substring(11, 13) + "시" + search.get(i).getBbsDate().substring(14,16) + "분"%></td>
+							<td>
+							<%if(search.get(i).getBbsReDate() != null) {%>
+								<%= search.get(i).getBbsReDate().substring(0, 11) + search.get(i).getBbsReDate().substring(11, 13) + "시" + search.get(i).getBbsReDate().substring(14,16) + "분"%>
 							<%} else {%>
 								-
 							<%} %>

@@ -166,4 +166,29 @@ public class BbsDAO {
 		return -1;
 	}
 	
+	// °Ë»ö
+	public ArrayList<Bbs> search(int pageNumber, String searchWord){
+		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 AND bbsTitle like ? ORDER BY bbsID DESC LIMIT 10";
+		ArrayList<Bbs> list = new ArrayList<Bbs>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			pstmt.setString(2,  "%"+searchWord+"%");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Bbs bbs = new Bbs();
+				bbs.setBbsID(rs.getInt(1));
+				bbs.setBbsTitle(rs.getString(2));
+				bbs.setUserID(rs.getString(3));
+				bbs.setBbsDate(rs.getString(4));
+				bbs.setBbsContent(rs.getString(5));
+				bbs.setBbsAvailable(rs.getInt(6));
+				bbs.setBbsReDate(rs.getString(7));
+				list.add(bbs);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
